@@ -17,5 +17,4 @@ if __name__ == "__main__":
     try:
         mcp.run(transport="stdio")
     except Exception as e:
-        print(f"Math server error: {e}", file=sys.stderr)
-        sys.exit(1)
+        print(f"Math server error: {e}")
