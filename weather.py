@@ -1,11 +1,16 @@
 from mcp.server.fastmcp import FastMCP
+import sys
 
-mcp=FastMCP("Weather")
+mcp = FastMCP("Weather")
 
 @mcp.tool()
-async def get_weather(location:str)->str:
-    """Get the weather location."""
-    return "It's always raining in California"
+async def get_weather(location: str) -> str:
+    """Get the weather for a location."""
+    return f"It's always raining in {location}"
 
-if __name__=="__main__":
-    mcp.run(transport="streamable-http")
+if __name__ == "__main__":
+    try:
+        mcp.run(transport="stdio")
+    except Exception as e:
+        print(f"Weather server error: {e}", file=sys.stderr)
+        sys.exit(1)

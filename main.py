@@ -1,6 +1,6 @@
-def main():
-    print("Hello from mcpdemolangchain!")
+# def main():
+#     print("Hello from mcpdemolangchain!")
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

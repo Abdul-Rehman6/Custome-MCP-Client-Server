@@ -10,15 +10,16 @@ import asyncio
 async def main():
     client=MultiServerMCPClient(
         {
-            "math":{
+            "Math":{
                 "command":"python",
-                "args":["mathserver.py"], ## Ensure correct absolute path
+                "args":["mathserver.py"], ## correct absolute path
                 "transport":"stdio",
             
             },
-            "weather": {
-                "url": "http://localhost:8000/mcp",  # Ensure server is running here
-                "transport": "streamable_http",
+            "Weather": {
+                "command":"python",
+                "args":["weather.py"],
+                "transport": "stdio",
             }
 
         }
@@ -30,7 +31,7 @@ async def main():
     tools=await client.get_tools()
     model=ChatOpenAI(model="gpt-4o-mini")
     agent=create_react_agent(
-        model,tools, verbose=True
+        model,tools
     )
 
     math_response = await agent.ainvoke(
